@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+export DISABLE_AUTO_UPDATE=1
+dotfiles_zshrc=${(%):-%N}
+dotfiles_home=$(dirname $dotfiles_zshrc)
+dotfiles_hosts=${dotfiles_home}/hosts
+hostname=`hostname`
+
+# for ohmyzsh
+export ZSH=${dotfiles_home}/oh-my-zsh
+export ZSH_CACHE_DIR=~/.zshcahe
+
+[ -f ${dotfiles_hosts}/${hostname}.pre.sh ] && . ${dotfiles_hosts}/${hostname}.pre.sh
+
+source ${ZSH}/oh-my-zsh.sh
